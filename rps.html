@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    
+    <h1>Wins:<span id="wins"></span></h1>
+    <h1>Losses: <span id="Losses"></span></h1>
+    <h1>Ties: <span id="Ties"></span></h1>
+
+    <script type="text/javascript">
+      var wins = 0;
+      var loss = 0;
+      var tie = 0;
+
+      for (var i = 0; i < 10; i++) {
+        var userRPS = prompt("Enter r, p, or s").toLowerCase();
+
+        if (userRPS === "r" || userRPS === "p" || userRPS === "s") {
+          var compRPS = Math.floor(Math.random() * 3);
+
+          console.log(compRPS);
+
+          if (compRPS == 0) {
+            compRPS = "r";
+          } else if (compRPS == 1) {
+            compRPS = "p";
+          } else {
+            compRPS = "s";
+          }
+
+          console.log(compRPS);
+
+          if (userRPS === compRPS) {
+            alert("It's a tie!");
+            tie++;
+          } else if (
+            (userRPS === "r" && compRPS === "p") ||
+            (userRPS === "s" && compRPS === "r") ||
+            (userRPS === "p" && compRPS === "s")
+          ) {
+            alert("You Lose!");
+            loss++;
+          } else {
+            alert("You Win!");
+            wins++;
+          }
+
+          alert(
+            "Round " +
+              (i + 1) +
+              "\nWins " +
+              wins +
+              " Loss " +
+              loss +
+              " Ties " +
+              tie
+          );
+        } else {
+          alert("Invalid Entry!");
+          i--;
+        }
+      }
+      document.getElementById("wins").innerHTML = wins;
+      document.getElementById("Losses").innerHTML = loss;
+      document.getElementById("Ties").innerHTML = tie;
+    </script>
+  </body>
+</html>
